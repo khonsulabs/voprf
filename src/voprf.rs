@@ -34,8 +34,8 @@ use crate::{CipherSuite, Error, Group, Result};
 
 /// A client which engages with a [VoprfServer] in verifiable mode, meaning
 /// that the OPRF outputs can be checked against a server public key.
-#[derive_where(Clone, ZeroizeOnDrop)]
-#[derive_where(Debug, Eq, Hash, Ord, PartialEq, PartialOrd; <CS::Group as Group>::Scalar, <CS::Group as Group>::Elem)]
+#[derive_where(Clone, Eq, PartialEq, ZeroizeOnDrop)]
+#[derive_where(Debug, Hash; <CS::Group as Group>::Scalar, <CS::Group as Group>::Elem)]
 #[cfg_attr(
     feature = "serde",
     derive(serde::Deserialize, serde::Serialize),
@@ -50,8 +50,8 @@ pub struct VoprfClient<CS: CipherSuite> {
 
 /// A server which engages with a [VoprfClient] in verifiable mode, meaning
 /// that the OPRF outputs can be checked against a server public key.
-#[derive_where(Clone, ZeroizeOnDrop)]
-#[derive_where(Debug, Eq, Hash, Ord, PartialEq, PartialOrd; <CS::Group as Group>::Scalar, <CS::Group as Group>::Elem)]
+#[derive_where(Clone, Eq, PartialEq, ZeroizeOnDrop)]
+#[derive_where(Debug, Hash; <CS::Group as Group>::Scalar, <CS::Group as Group>::Elem)]
 #[cfg_attr(
     feature = "serde",
     derive(serde::Deserialize, serde::Serialize),

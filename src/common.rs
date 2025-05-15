@@ -68,8 +68,8 @@ impl Mode {
 
 /// The first client message sent from a client (either verifiable or not) to a
 /// server (either verifiable or not).
-#[derive_where(Clone, ZeroizeOnDrop)]
-#[derive_where(Debug, Eq, Hash, Ord, PartialEq, PartialOrd; <CS::Group as Group>::Elem)]
+#[derive_where(Clone, Eq, PartialEq, ZeroizeOnDrop)]
+#[derive_where(Debug, Hash; <CS::Group as Group>::Elem)]
 #[cfg_attr(
     feature = "serde",
     derive(serde::Deserialize, serde::Serialize),
@@ -82,8 +82,8 @@ pub struct BlindedElement<CS: CipherSuite>(
 
 /// The server's response to the [BlindedElement] message from a client (either
 /// verifiable or not) to a server (either verifiable or not).
-#[derive_where(Clone, ZeroizeOnDrop)]
-#[derive_where(Debug, Eq, Hash, Ord, PartialEq, PartialOrd; <CS::Group as Group>::Elem)]
+#[derive_where(Clone, Eq, PartialEq, ZeroizeOnDrop)]
+#[derive_where(Debug, Hash; <CS::Group as Group>::Elem)]
 #[cfg_attr(
     feature = "serde",
     derive(serde::Deserialize, serde::Serialize),
@@ -96,8 +96,8 @@ pub struct EvaluationElement<CS: CipherSuite>(
 
 /// Contains prepared [`EvaluationElement`]s by a server batch evaluate
 /// preparation.
-#[derive_where(Clone, ZeroizeOnDrop)]
-#[derive_where(Debug, Eq, Hash, Ord, PartialEq, PartialOrd; <CS::Group as Group>::Elem)]
+#[derive_where(Clone, Eq, PartialEq, ZeroizeOnDrop)]
+#[derive_where(Debug, Hash; <CS::Group as Group>::Elem)]
 #[cfg_attr(
     feature = "serde",
     derive(serde::Deserialize, serde::Serialize),
@@ -107,8 +107,8 @@ pub struct PreparedEvaluationElement<CS: CipherSuite>(pub(crate) EvaluationEleme
 
 /// A proof produced by a server that the OPRF output matches against a server
 /// public key.
-#[derive_where(Clone, ZeroizeOnDrop)]
-#[derive_where(Debug, Eq, Hash, Ord, PartialEq, PartialOrd; <CS::Group as Group>::Scalar)]
+#[derive_where(Clone, Eq, PartialEq, ZeroizeOnDrop)]
+#[derive_where(Debug, Hash; <CS::Group as Group>::Scalar)]
 #[cfg_attr(
     feature = "serde",
     derive(serde::Deserialize, serde::Serialize),

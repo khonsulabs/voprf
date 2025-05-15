@@ -36,8 +36,8 @@ use crate::{CipherSuite, Error, Group, Result};
 
 /// A client which engages with a [OprfServer] in base mode, meaning
 /// that the OPRF outputs are not verifiable.
-#[derive_where(Clone, ZeroizeOnDrop)]
-#[derive_where(Debug, Eq, Hash, Ord, PartialEq, PartialOrd; <CS::Group as Group>::Scalar)]
+#[derive_where(Clone, Eq, PartialEq, ZeroizeOnDrop)]
+#[derive_where(Debug, Hash; <CS::Group as Group>::Scalar)]
 #[cfg_attr(
     feature = "serde",
     derive(serde::Deserialize, serde::Serialize),
@@ -50,8 +50,8 @@ pub struct OprfClient<CS: CipherSuite> {
 
 /// A server which engages with a [OprfClient] in base mode, meaning
 /// that the OPRF outputs are not verifiable.
-#[derive_where(Clone, ZeroizeOnDrop)]
-#[derive_where(Debug, Eq, Hash, Ord, PartialEq, PartialOrd; <CS::Group as Group>::Scalar)]
+#[derive_where(Clone, Eq, PartialEq, ZeroizeOnDrop)]
+#[derive_where(Debug, Hash; <CS::Group as Group>::Scalar)]
 #[cfg_attr(
     feature = "serde",
     derive(serde::Deserialize, serde::Serialize),

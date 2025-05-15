@@ -40,6 +40,7 @@ where
     /// The type of group elements
     type Elem: ConstantTimeEq
         + Copy
+        + Eq
         + Zeroize
         + for<'a> Add<&'a Self::Elem, Output = Self::Elem>
         + for<'a> Mul<&'a Self::Scalar, Output = Self::Elem>;
@@ -50,6 +51,7 @@ where
     /// The type of base field scalars
     type Scalar: ConstantTimeEq
         + Copy
+        + Eq
         + Zeroize
         + for<'a> Add<&'a Self::Scalar, Output = Self::Scalar>
         + for<'a> Mul<&'a Self::Scalar, Output = Self::Scalar>
